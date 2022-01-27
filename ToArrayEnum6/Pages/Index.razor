@@ -1,0 +1,33 @@
+﻿@page "/"
+@using System.Collections
+
+<h1>Hello, world!</h1>
+
+Exception: @ex
+
+@code {
+    string ex;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        ArrayList list = new ArrayList();
+        list.Add(Day.Monday);
+
+        try
+        {
+            var array = list.ToArray(typeof(Day));
+        }
+        catch(Exception e)
+        {
+            this.ex = e.ToString();
+        }
+    }
+
+    public enum Day
+    {
+        Monday,
+        Tuesday
+    }
+}
